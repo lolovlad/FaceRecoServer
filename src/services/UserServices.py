@@ -16,7 +16,7 @@ class UserServices:
         self.__user_repo: UserRepository = user_repo
 
     def load_image_into_numpy_array(self, data):
-        return np.array(Image.open(BytesIO(data)))
+        return np.array(Image.open(BytesIO(data)).convert('RGB'))
 
     async def embedding_face(self, face_img):
         obj = DeepFace.represent(face_img,
